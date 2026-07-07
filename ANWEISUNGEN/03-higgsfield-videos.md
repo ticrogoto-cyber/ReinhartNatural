@@ -39,7 +39,7 @@ Dateien nach `assets/video/`.
 ## Video 3 — Produkt-Miniaturen (je Produkt, 5 s, optional)
 
 Ein 5-Sekünder pro Flasche (langsame 180°-Drehung auf Drehteller-Optik, passender
-Akzentfarb-Hintergrund je Produkt: Rosa #b26a7a, Blau #3e6a8e, Grün #6f8a70,
+Akzentfarb-Hintergrund je Produkt: Rosa #c98a76, Blau #517495, Grün #77906f,
 Violett #7d6a8e). Verwendung: Hover-Effekt auf den Kollektions-Karten (nice-to-have).
 
 ## Rechliche Leitplanke für ALLE Videos

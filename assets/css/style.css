@@ -1,8 +1,10 @@
 /* ============================================================
    REINHART NATURAL — reinhartnatural.de
-   Design-System: Porzellanweiß, Tintenschwarz, Apothekergrün.
-   Cormorant Garamond (Display) + EB Garamond (Text) + Jost (UI),
-   scharfe Kanten, Messing nur als Detail, ein Diamant pro Produkt.
+   Design-System: Porzellanweiß + vier Substanzfarben (Koralle,
+   Ozean, Moos, Lavendel), Nachtblau für dunkle Bänder.
+   Jost (Headlines/UI) + EB Garamond (Text) + Cormorant (Akzente).
+   Fluide Mesh-Gradients, organische Zellstrukturen, Asymmetrie —
+   das weiche Gegengewicht zum harten Namen.
    ============================================================ */
 
 /* ---------- Schriften (selbst gehostet, DSGVO-konform) ---------- */
@@ -59,17 +61,24 @@
   --porcelain: #fbfbf9;    /* Porzellanweiß — Seitengrund */
   --paper: #ffffff;        /* reines Weiß — Karten */
   --mist: #f0f1ee;         /* helle Wechselfläche */
-  --pine: #1d3b33;         /* Apothekergrün — Hauptakzent */
-  --abyss: #0e1f1b;        /* Schwarzgrün — Footer */
+  --nacht: #20242f;        /* Nachtblau — dunkle Bänder */
+  --abyss: #14161d;        /* Tiefnacht — Footer */
   --gold: #b2a075;         /* Messing — nur für Details */
 
-  --rosa: #b26a7a;         /* DMSO */
-  --blau: #3e6a8e;         /* Methylenblau */
-  --gruen: #6f8a70;        /* Magnesiumöl */
-  --violett: #7b6a8a;      /* Zeolith */
+  --koralle: #c98a76;      /* DMSO — warmes Pfirsich/Koralle */
+  --ozean: #517495;        /* Methylenblau — kühles Ozeanblau */
+  --moos: #77906f;         /* Magnesiumöl — organisches Moosgrün */
+  --lavendel: #9d97ad;     /* Zeolith — sanftes Lavendel-Grau */
 
-  --hairline: rgba(23, 25, 28, 0.18);
-  --hairline-soft: rgba(23, 25, 28, 0.1);
+  /* Alt-Namen bleiben gültig */
+  --pine: var(--nacht);
+  --rosa: var(--koralle);
+  --blau: var(--ozean);
+  --gruen: var(--moos);
+  --violett: var(--lavendel);
+
+  --hairline: rgba(23, 25, 28, 0.14);
+  --hairline-soft: rgba(23, 25, 28, 0.07);
   --amber: #7a4f2c;        /* Braunglas-Ton für Illustrationen */
 
   /* Aliase für Bestandsregeln */
@@ -111,15 +120,35 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Papierkorn — die einzige „Verzierung“ */
+/* Papierkorn — feinstes Rauschen */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.18;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Mesh-Gradient — vier Substanzfarben, extrem sanft, in langsamer Drift */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(44rem 32rem at 12% 6%, rgba(201, 138, 118, 0.09), transparent 62%),
+    radial-gradient(48rem 36rem at 90% 14%, rgba(81, 116, 149, 0.09), transparent 62%),
+    radial-gradient(42rem 32rem at 84% 88%, rgba(119, 144, 111, 0.09), transparent 62%),
+    radial-gradient(46rem 34rem at 6% 90%, rgba(157, 151, 173, 0.11), transparent 62%);
+  animation: mesh-drift 90s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-drift {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1) rotate(0.001deg); }
+  to   { transform: translate3d(1.5%, 1.5%, 0) scale(1.07) rotate(0.001deg); }
 }
 
 main,
@@ -130,7 +159,7 @@ footer {
 }
 
 ::selection {
-  background: rgba(29, 59, 51, 0.16);
+  background: rgba(81, 116, 149, 0.18);
 }
 
 img,
@@ -182,21 +211,33 @@ li a:hover {
 
 h1, h2,
 .display {
-  font-family: var(--serif-display);
-  font-weight: 520;
-  line-height: 1.08;
-  letter-spacing: 0.005em;
+  font-family: var(--sans);
+  font-weight: 460;
+  line-height: 1.12;
+  letter-spacing: -0.005em;
   color: var(--ink);
 }
 
 .display {
-  font-size: clamp(3rem, 7.4vw, 5.9rem);
-  font-weight: 480;
+  font-size: clamp(2.7rem, 6.2vw, 4.9rem);
+  font-weight: 420;
+  line-height: 1.08;
 }
 
 h2 {
-  font-size: clamp(2.2rem, 4vw, 3.1rem);
-  font-weight: 520;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  font-weight: 440;
+}
+
+/* Das Serif-Flüstern: ein kursives Akzentwort in der Grotesk-Headline */
+h1 em, h2 em,
+.display em {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.08em;
+  letter-spacing: 0;
+  line-height: 0;
 }
 
 h3 {
@@ -324,43 +365,44 @@ h3 {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 1.05rem 2.2rem;
+  padding: 1.05rem 2.4rem;
   border: 1px solid var(--ink);
+  border-radius: 999px;
   color: var(--ink);
   background: transparent;
   cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   text-align: center;
 }
 
 .btn:hover {
-  background: var(--pine);
-  border-color: var(--pine);
-  color: #f5f7f4;
+  background: var(--nacht);
+  border-color: var(--nacht);
+  color: #eef0f6;
 }
 
 .btn-solid {
-  background: var(--pine);
-  border-color: var(--pine);
-  color: #f5f7f4;
+  background: var(--nacht);
+  border-color: var(--nacht);
+  color: #eef0f6;
 }
 
 .btn-solid:hover {
-  background: #16302a;
-  border-color: #16302a;
-  color: #f5f7f4;
+  background: #2b3040;
+  border-color: #2b3040;
+  color: #eef0f6;
 }
 
 /* ---------- Ankündigung + Header ---------- */
 
 .annonce {
-  background: var(--pine);
+  background: var(--nacht);
   text-align: center;
   padding: 0.6rem 1rem;
   font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(244, 246, 243, 0.88);
+  color: rgba(238, 240, 246, 0.88);
 }
 
 .annonce .dia {
@@ -458,22 +500,31 @@ h3 {
   stroke: var(--ink);
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero — asymmetrisch, fluide ---------- */
 
 .hero {
-  padding-block: clamp(4rem, 8vw, 7rem) 0;
-  text-align: center;
+  padding-block: clamp(3.5rem, 7vw, 6.5rem) clamp(3rem, 6vw, 5rem);
+  position: relative;
   overflow: hidden;
 }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-seal {
-  width: clamp(7rem, 12vw, 9.5rem);
-  margin: 0 auto 2.4rem;
+  width: clamp(5.5rem, 8vw, 7rem);
+  margin-bottom: 2.2rem;
 }
 
 .hero .eyebrow {
   display: block;
-  margin-bottom: 1.7rem;
+  margin-bottom: 1.6rem;
 }
 
 .hero .display {
@@ -482,24 +533,39 @@ h3 {
 
 .hero-claim {
   font-family: var(--serif);
-  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-size: clamp(1.12rem, 1.9vw, 1.32rem);
   color: var(--coal);
-  max-width: 34em;
-  margin: 2.2rem auto 0;
-  line-height: 1.6;
+  max-width: 32em;
+  margin-top: 2rem;
+  line-height: 1.65;
 }
 
 .hero-actions {
   display: flex;
-  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 2.6rem;
 }
 
-/* Regalbrett mit Flaschen-Quartett */
+/* Zellstruktur — botanische Linienkunst, sehr langsam drehend */
+.hero-cells {
+  position: absolute;
+  top: -8rem;
+  right: -10rem;
+  width: clamp(24rem, 42vw, 40rem);
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  animation: cells-turn 180s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes cells-turn {
+  to { transform: rotate(360deg); }
+}
+
+/* Flaschen-Quartett — gestaffelt statt aufgereiht */
 .hero-shelf {
-  margin-top: clamp(3.5rem, 7vw, 5.5rem);
   position: relative;
 }
 
@@ -507,24 +573,29 @@ h3 {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: clamp(1.2rem, 4vw, 3.2rem);
+  gap: clamp(0.9rem, 2.2vw, 1.9rem);
   padding-bottom: 0;
 }
 
 .hero-shelf .bottles svg {
-  height: clamp(11rem, 24vw, 19rem);
+  height: clamp(11rem, 22vw, 18rem);
   width: auto;
 }
 
-.hero-shelf .bottles svg.h-sm { height: clamp(8rem, 17.5vw, 14rem); }
-.hero-shelf .bottles svg.h-jar { height: clamp(7.5rem, 16vw, 12.5rem); }
+.hero-shelf .bottles svg.h-sm { height: clamp(8rem, 16vw, 13rem); }
+.hero-shelf .bottles svg.h-jar { height: clamp(7.5rem, 14.5vw, 12rem); }
 
-.shelf-line {
-  border: 0;
-  border-top: 1px solid var(--ink);
-  opacity: 0.6;
-  width: min(56rem, 88%);
-  margin: 0 auto;
+.hero-shelf .bottles svg:nth-child(1) { margin-bottom: 0.4rem; }
+.hero-shelf .bottles svg:nth-child(2) { margin-bottom: 1.6rem; }
+.hero-shelf .bottles svg:nth-child(4) { margin-bottom: 1.1rem; }
+
+.shelf-curve {
+  display: block;
+  width: 100%;
+  height: 1.5rem;
+  margin-top: -0.2rem;
+  color: var(--ink);
+  opacity: 0.4;
 }
 
 /* ---------- Kollektion ---------- */
@@ -532,24 +603,32 @@ h3 {
 .grid-products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--hairline-soft);
-  border: 1px solid var(--hairline-soft);
+  gap: clamp(1rem, 2vw, 1.6rem);
 }
 
 .product-card {
   background: var(--paper);
+  border: 1px solid var(--hairline-soft);
+  border-radius: 0.9rem;
   padding: 2.6rem 1.8rem 2.4rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  transition: background-color 0.3s ease;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .product-card:hover {
-  background: #f4f5f2;
+  border-color: var(--hairline);
+  box-shadow: 0 18px 44px -22px rgba(32, 36, 47, 0.22);
+}
+
+/* Asymmetrischer Rhythmus im Regal */
+@media (min-width: 64.01rem) {
+  .grid-products:not(.cols-3) .product-card:nth-child(2) { margin-top: 1.6rem; }
+  .grid-products:not(.cols-3) .product-card:nth-child(3) { margin-top: 0.5rem; }
+  .grid-products:not(.cols-3) .product-card:nth-child(4) { margin-top: 2.2rem; }
 }
 
 .product-card .no {
@@ -682,46 +761,50 @@ h3 {
 /* ---------- Charge ---------- */
 
 .charge {
-  background: var(--pine);
-  color: rgba(244, 246, 243, 0.82);
+  background:
+    radial-gradient(56rem 38rem at 88% 0%, rgba(81, 116, 149, 0.32), transparent 62%),
+    radial-gradient(48rem 34rem at 4% 100%, rgba(157, 151, 173, 0.2), transparent 60%),
+    radial-gradient(40rem 30rem at 40% 110%, rgba(201, 138, 118, 0.1), transparent 55%),
+    var(--nacht);
+  color: rgba(236, 238, 244, 0.82);
 }
 
 .charge h2 {
-  color: #f7f8f5;
+  color: #f2f3f7;
 }
 
 .charge .eyebrow {
-  color: rgba(244, 246, 243, 0.55);
+  color: rgba(236, 238, 244, 0.55);
 }
 
 .charge .lede {
-  color: rgba(244, 246, 243, 0.75);
+  color: rgba(236, 238, 244, 0.75);
 }
 
 .charge .small {
-  color: rgba(244, 246, 243, 0.55);
+  color: rgba(236, 238, 244, 0.55);
 }
 
 .charge .btn {
-  border-color: rgba(244, 246, 243, 0.6);
-  color: #f5f7f4;
+  border-color: rgba(236, 238, 244, 0.6);
+  color: #eef0f6;
 }
 
 .charge .btn:hover {
-  background: rgba(244, 246, 243, 0.12);
-  border-color: #f5f7f4;
+  background: rgba(236, 238, 244, 0.12);
+  border-color: #eef0f6;
 }
 
 .charge .btn-solid {
-  background: #f7f8f5;
-  border-color: #f7f8f5;
-  color: var(--pine);
+  background: #f2f3f7;
+  border-color: #f2f3f7;
+  color: var(--nacht);
 }
 
 .charge .btn-solid:hover {
   background: #ffffff;
   border-color: #ffffff;
-  color: var(--pine);
+  color: var(--nacht);
 }
 
 .charge-grid {
@@ -733,13 +816,13 @@ h3 {
 
 .lot-stamp {
   justify-self: center;
-  border: 2px solid rgba(244, 246, 243, 0.9);
-  outline: 1px solid rgba(244, 246, 243, 0.9);
+  border: 2px solid rgba(236, 238, 244, 0.9);
+  outline: 1px solid rgba(236, 238, 244, 0.9);
   outline-offset: 4px;
   padding: 2.1rem 2.6rem;
   text-align: center;
   transform: rotate(-2.5deg);
-  color: #f5f7f4;
+  color: #eef0f6;
 }
 
 .lot-stamp .lot-no {
@@ -767,13 +850,13 @@ h3 {
   display: flex;
   gap: 1rem;
   padding: 0.85rem 0;
-  border-top: 1px solid rgba(244, 246, 243, 0.16);
+  border-top: 1px solid rgba(236, 238, 244, 0.16);
   font-size: 0.92rem;
-  color: rgba(244, 246, 243, 0.78);
+  color: rgba(236, 238, 244, 0.78);
 }
 
 .charge-facts li:last-child {
-  border-bottom: 1px solid rgba(244, 246, 243, 0.16);
+  border-bottom: 1px solid rgba(236, 238, 244, 0.16);
 }
 
 .charge-facts .dia {
@@ -860,9 +943,10 @@ h3 {
   justify-content: space-between;
   gap: 2rem;
   padding: 1.35rem 0.2rem;
-  font-family: var(--serif-display);
-  font-size: 1.38rem;
-  font-weight: 600;
+  font-family: var(--sans);
+  font-size: 1.06rem;
+  font-weight: 480;
+  letter-spacing: 0.01em;
 }
 
 .faq summary::-webkit-details-marker {
@@ -914,14 +998,17 @@ h3 {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background: var(--abyss);
-  color: rgba(235, 241, 237, 0.82);
+  background:
+    radial-gradient(50rem 30rem at 90% 0%, rgba(81, 116, 149, 0.16), transparent 60%),
+    radial-gradient(44rem 28rem at 5% 100%, rgba(157, 151, 173, 0.12), transparent 60%),
+    var(--abyss);
+  color: rgba(233, 235, 242, 0.82);
   padding: clamp(3.5rem, 7vw, 5.5rem) 0 2.5rem;
   font-size: 0.85rem;
 }
 
 .site-footer a {
-  color: rgba(235, 241, 237, 0.82);
+  color: rgba(233, 235, 242, 0.82);
   transition: color 0.2s ease;
 }
 
@@ -956,7 +1043,7 @@ h3 {
   max-width: 24em;
   font-size: 0.8rem;
   line-height: 1.7;
-  color: rgba(235, 241, 237, 0.6);
+  color: rgba(233, 235, 242, 0.6);
 }
 
 .footer-col h4 {
@@ -965,7 +1052,7 @@ h3 {
   font-weight: 500;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(235, 241, 237, 0.45);
+  color: rgba(233, 235, 242, 0.45);
   margin-bottom: 1.1rem;
 }
 
@@ -978,21 +1065,21 @@ h3 {
 }
 
 .footer-legal {
-  border-top: 1px solid rgba(235, 241, 237, 0.14);
+  border-top: 1px solid rgba(233, 235, 242, 0.14);
   padding-top: 1.8rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
   justify-content: space-between;
   font-size: 0.72rem;
-  color: rgba(235, 241, 237, 0.5);
+  color: rgba(233, 235, 242, 0.5);
 }
 
 .footer-disclaimer {
   margin-top: 1.6rem;
   font-size: 0.7rem;
   line-height: 1.7;
-  color: rgba(235, 241, 237, 0.42);
+  color: rgba(233, 235, 242, 0.42);
   max-width: 60em;
 }
 
@@ -1029,6 +1116,17 @@ h3 {
   height: clamp(20rem, 38vw, 30rem);
   width: auto;
   margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.product-stage::before {
+  content: "";
+  position: absolute;
+  inset: 8% 12% 22%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--d, #9d97ad) 16%, transparent), transparent 72%);
+  pointer-events: none;
 }
 
 .product-stage svg.h-sm {
@@ -1055,9 +1153,9 @@ h3 {
 }
 
 .product-info h1 {
-  font-size: clamp(2.8rem, 5.4vw, 4.2rem);
-  font-weight: 520;
-  letter-spacing: 0.02em;
+  font-size: clamp(2.6rem, 5vw, 3.9rem);
+  font-weight: 420;
+  letter-spacing: 0;
   line-height: 1.05;
 }
 
@@ -1153,6 +1251,7 @@ h3 {
 .legal-box {
   margin-top: 2.4rem;
   border: 1px solid var(--hairline);
+  border-radius: 0.9rem;
   padding: 1.4rem 1.6rem;
   font-size: 0.8rem;
   color: var(--coal);
@@ -1180,7 +1279,8 @@ h3 {
 }
 
 .product-prose h2 {
-  font-size: 1.7rem;
+  font-size: 1.55rem;
+  font-weight: 480;
 }
 
 .cross-sell {
@@ -1221,7 +1321,8 @@ h3 {
 }
 
 .legal-page h2 {
-  font-size: 1.55rem;
+  font-size: 1.3rem;
+  font-weight: 500;
   margin: 2.5rem 0 0.8rem;
 }
 
@@ -1256,8 +1357,8 @@ h3 {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(14px);
+  transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .reveal.in-view {
@@ -1273,6 +1374,10 @@ h3 {
   html {
     scroll-behavior: auto;
   }
+  body::after,
+  .hero-cells {
+    animation: none;
+  }
   .reveal {
     opacity: 1;
     transform: none;
@@ -1287,6 +1392,14 @@ h3 {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 64rem) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .hero-cells {
+    right: -14rem;
+    opacity: 0.65;
+  }
   .grid-products {
     grid-template-columns: repeat(2, 1fr);
   }
