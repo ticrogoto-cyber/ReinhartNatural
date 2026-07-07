@@ -1,0 +1,1305 @@
+/* ============================================================
+   REINHART NATURAL — reinhartnatural.de
+   Apotheke · Avantgarde · Alchemie
+   Design-System nach Brandkit: Papier-Ivory, Tintenschwarz,
+   EB Garamond + Inter, scharfe Kanten, ein Diamant pro Produkt.
+   ============================================================ */
+
+/* ---------- Schriften (selbst gehostet, DSGVO-konform) ---------- */
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/ebgaramond-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/ebgaramond-italic-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Dawning of a New Day";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/dawning-latin.woff2") format("woff2");
+}
+
+/* ---------- Token ---------- */
+
+:root {
+  --ink: #1b1b1b;          /* Tintenschwarz */
+  --coal: #2f3133;         /* Kohlegrau */
+  --stone: #6a6d6e;        /* Steingrau */
+  --ivory: #f3efe4;        /* Papier Ivory */
+  --parchment: #e7dcc3;    /* Pergament Beige */
+  --gold: #c1a36a;         /* Altgold */
+  --deepsea: #1e3a45;      /* Tiefsee */
+
+  --rosa: #b26a7a;         /* DMSO */
+  --blau: #3e6a8e;         /* Methylenblau */
+  --gruen: #6f8a70;        /* Magnesiumöl */
+  --violett: #7b6a8a;      /* Zeolith */
+
+  --hairline: rgba(27, 27, 27, 0.22);
+  --hairline-soft: rgba(27, 27, 27, 0.12);
+  --amber: #7a4f2c;        /* Braunglas-Ton für Illustrationen */
+
+  --serif: "EB Garamond", "Garamond", "Georgia", serif;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --hand: "Dawning of a New Day", cursive;
+
+  --w-wide: 76rem;
+  --w-text: 44rem;
+}
+
+/* ---------- Reset / Basis ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background-color: var(--ivory);
+  font-feature-settings: "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Papierkorn — die einzige „Verzierung“ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+::selection {
+  background: rgba(178, 106, 122, 0.25);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p a,
+li a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--hairline);
+  transition: text-decoration-color 0.2s ease;
+}
+
+p a:hover,
+li a:hover {
+  text-decoration-color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 0.6rem 1rem;
+  z-index: 100;
+  font-size: 0.8rem;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- Typografie ---------- */
+
+h1, h2, h3,
+.display {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+
+.display {
+  font-size: clamp(2.9rem, 7vw, 5.4rem);
+  font-weight: 550;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.lede {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--coal);
+  font-feature-settings: "onum";
+}
+
+.prose p {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--coal);
+  font-feature-settings: "onum";
+  max-width: var(--w-text);
+}
+
+.prose p + p {
+  margin-top: 1.2em;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.eyebrow .dia {
+  font-size: 0.55em;
+  vertical-align: 0.22em;
+  color: var(--ink);
+}
+
+.small {
+  font-size: 0.8125rem;
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+/* ---------- Layout ---------- */
+
+.wrap {
+  width: min(var(--w-wide), 100% - 3rem);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+.section-head {
+  max-width: 40rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.section-head .eyebrow {
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+.section-head p {
+  margin-top: 1.2rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .section-head {
+  margin-inline: auto;
+}
+
+/* Hairline mit Diamant */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 0;
+}
+
+.rule-diamond {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  border: 0;
+  margin: 0;
+}
+
+.rule-diamond::before,
+.rule-diamond::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--hairline);
+}
+
+.rule-diamond span {
+  font-size: 0.5rem;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1.05rem 2.2rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  text-align: center;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.btn-solid {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.btn-solid:hover {
+  background: var(--coal);
+  border-color: var(--coal);
+  color: var(--ivory);
+}
+
+/* ---------- Ankündigung + Header ---------- */
+
+.annonce {
+  background: var(--parchment);
+  border-bottom: 1px solid var(--hairline-soft);
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coal);
+}
+
+.annonce .dia {
+  font-size: 0.55em;
+  vertical-align: 0.22em;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(243, 239, 228, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--hairline-soft);
+  transition: box-shadow 0.3s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 1px 0 var(--hairline), 0 8px 24px rgba(27, 27, 27, 0.05);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  height: 4.25rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand svg {
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: none;
+}
+
+.brand-name {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brand-name span {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  display: block;
+  color: var(--stone);
+  margin-top: -0.1rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.site-nav a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coal);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  stroke: var(--ink);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: clamp(4rem, 8vw, 7rem) 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-seal {
+  width: clamp(7rem, 12vw, 9.5rem);
+  margin: 0 auto 2.4rem;
+}
+
+.hero .display {
+  margin-bottom: 1.6rem;
+}
+
+.tagline {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--coal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.tagline .dia {
+  font-size: 0.5em;
+  color: var(--rosa);
+}
+
+.hero-claim {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  color: var(--coal);
+  max-width: 34em;
+  margin: 2.2rem auto 0;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.6rem;
+}
+
+/* Regalbrett mit Flaschen-Quartett */
+.hero-shelf {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  position: relative;
+}
+
+.hero-shelf .bottles {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(1.2rem, 4vw, 3.2rem);
+  padding-bottom: 0;
+}
+
+.hero-shelf .bottles svg {
+  height: clamp(11rem, 24vw, 19rem);
+  width: auto;
+}
+
+.hero-shelf .bottles svg.h-sm { height: clamp(8rem, 17.5vw, 14rem); }
+.hero-shelf .bottles svg.h-jar { height: clamp(7.5rem, 16vw, 12.5rem); }
+
+.shelf-line {
+  border: 0;
+  border-top: 1px solid var(--ink);
+  opacity: 0.6;
+  width: min(56rem, 88%);
+  margin: 0 auto;
+}
+
+/* ---------- Kollektion ---------- */
+
+.grid-products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--hairline-soft);
+  border: 1px solid var(--hairline-soft);
+}
+
+.product-card {
+  background: var(--ivory);
+  padding: 2.6rem 1.8rem 2.4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.product-card:hover {
+  background: #f7f4ea;
+}
+
+.product-card .no {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.3rem;
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  color: var(--stone);
+  font-feature-settings: "onum";
+}
+
+.product-card figure {
+  height: 11.5rem;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1.9rem;
+  transition: transform 0.35s ease;
+}
+
+.product-card:hover figure {
+  transform: translateY(-4px);
+}
+
+.product-card figure svg {
+  height: 100%;
+  width: auto;
+}
+
+.product-card figure svg.h-sm { height: 82%; }
+.product-card figure svg.h-jar { height: 68%; }
+
+.product-card .dia {
+  font-size: 0.55rem;
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+
+.product-card h3 {
+  font-size: 1.45rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.product-card .chem {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--coal);
+  margin-top: 0.25rem;
+}
+
+.product-card .spec {
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 0.8rem;
+}
+
+.product-card .price {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.3rem;
+}
+
+.product-card .base-price {
+  font-size: 0.7rem;
+  color: var(--stone);
+  margin-top: 0.15rem;
+}
+
+.product-card .card-link {
+  margin-top: 1.5rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.2rem;
+}
+
+/* Karte komplett klickbar */
+.product-card .stretch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* ---------- Prinzipien ---------- */
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.principle .num {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-feature-settings: "onum";
+  line-height: 1;
+}
+
+.principle h3 {
+  margin: 1.1rem 0 0.7rem;
+  font-size: 1.35rem;
+}
+
+.principle p {
+  font-size: 0.92rem;
+  color: var(--coal);
+  max-width: 30em;
+}
+
+.pullquote {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  max-width: 26em;
+  margin: clamp(4rem, 8vw, 6.5rem) auto 0;
+  line-height: 1.4;
+}
+
+/* ---------- Charge ---------- */
+
+.charge {
+  background: var(--parchment);
+  border-block: 1px solid var(--hairline-soft);
+}
+
+.charge-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.lot-stamp {
+  justify-self: center;
+  border: 2px solid var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+  padding: 2.1rem 2.6rem;
+  text-align: center;
+  transform: rotate(-2.5deg);
+  color: var(--ink);
+  opacity: 0.85;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(243, 239, 228, 0.35), transparent 60%);
+}
+
+.lot-stamp .lot-no {
+  font-family: var(--sans);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  white-space: nowrap;
+}
+
+.lot-stamp .lot-sub {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.charge-facts {
+  list-style: none;
+  margin-top: 1.8rem;
+  max-width: var(--w-text);
+}
+
+.charge-facts li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--hairline-soft);
+  font-size: 0.92rem;
+  color: var(--coal);
+}
+
+.charge-facts li:last-child {
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.charge-facts .dia {
+  flex: none;
+  font-size: 0.5rem;
+  line-height: 2.6;
+}
+
+/* ---------- Manufaktur ---------- */
+
+.manufaktur-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.signature {
+  font-family: var(--hand);
+  font-size: 2.6rem;
+  color: var(--ink);
+  margin-top: 2.2rem;
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+
+.signature-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 0.2rem;
+}
+
+.material-list {
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+
+.material-list li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1.2rem;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid var(--hairline-soft);
+  font-size: 0.92rem;
+}
+
+.material-list dt,
+.material-list .k {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  padding-top: 0.2rem;
+}
+
+.material-list .v {
+  color: var(--coal);
+}
+
+/* ---------- FAQ ---------- */
+
+.faq {
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.faq details {
+  border-top: 1px solid var(--hairline);
+}
+
+.faq details:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.35rem 0.2rem;
+  font-family: var(--serif);
+  font-size: 1.22rem;
+  font-weight: 600;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: var(--stone);
+  transition: transform 0.25s ease;
+  flex: none;
+}
+
+.faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq .faq-body {
+  padding: 0 0.2rem 1.6rem;
+}
+
+.faq .faq-body p {
+  font-size: 0.95rem;
+  color: var(--coal);
+  max-width: 40em;
+}
+
+.faq .faq-body p + p {
+  margin-top: 0.8em;
+}
+
+/* ---------- Verteiler ---------- */
+
+.verteiler {
+  text-align: center;
+}
+
+.verteiler .btn {
+  margin-top: 2.4rem;
+}
+
+.verteiler .small {
+  margin-top: 1.4rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--ink);
+  color: rgba(243, 239, 228, 0.82);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0 2.5rem;
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: rgba(243, 239, 228, 0.82);
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--ivory);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-bottom: 3rem;
+}
+
+.footer-brand svg {
+  width: 4.2rem;
+  height: 4.2rem;
+  margin-bottom: 1.4rem;
+}
+
+.footer-brand .wordmark {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-brand p {
+  margin-top: 1rem;
+  max-width: 24em;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: rgba(243, 239, 228, 0.6);
+}
+
+.footer-col h4 {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(243, 239, 228, 0.45);
+  margin-bottom: 1.1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 0.55rem;
+}
+
+.footer-legal {
+  border-top: 1px solid rgba(243, 239, 228, 0.15);
+  padding-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: rgba(243, 239, 228, 0.5);
+}
+
+.footer-disclaimer {
+  margin-top: 1.6rem;
+  font-size: 0.7rem;
+  line-height: 1.7;
+  color: rgba(243, 239, 228, 0.42);
+  max-width: 60em;
+}
+
+/* ---------- Produktseite ---------- */
+
+.breadcrumb {
+  padding-top: 2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.breadcrumb a:hover {
+  color: var(--ink);
+}
+
+.product-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(4rem, 8vw, 7rem);
+}
+
+.product-stage {
+  position: sticky;
+  top: 6.5rem;
+  text-align: center;
+  padding: clamp(2rem, 4vw, 3.5rem) 1rem 0;
+}
+
+.product-stage svg {
+  height: clamp(20rem, 38vw, 30rem);
+  width: auto;
+  margin-inline: auto;
+}
+
+.product-stage svg.h-jar {
+  height: clamp(15rem, 28vw, 22rem);
+}
+
+.product-stage .stage-line {
+  border: 0;
+  border-top: 1px solid var(--ink);
+  opacity: 0.55;
+  width: 78%;
+  margin: 0 auto;
+}
+
+.product-info .dia {
+  font-size: 0.6rem;
+  line-height: 1;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.product-info h1 {
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+.product-info .chem {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--coal);
+  margin-top: 0.5rem;
+}
+
+.product-info .spec-line {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 1.1rem;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 2.2rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.price-row .price {
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  font-weight: 600;
+}
+
+.price-row .price-meta {
+  font-size: 0.75rem;
+  color: var(--stone);
+  line-height: 1.5;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.6rem;
+}
+
+.cta-note {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--stone);
+  max-width: 36em;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2.6rem;
+  font-size: 0.9rem;
+}
+
+.spec-table th,
+.spec-table td {
+  text-align: left;
+  padding: 0.72rem 0.2rem;
+  border-top: 1px solid var(--hairline-soft);
+  vertical-align: top;
+}
+
+.spec-table tr:last-child th,
+.spec-table tr:last-child td {
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.spec-table th {
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  width: 11rem;
+  padding-right: 1.5rem;
+}
+
+.spec-table td {
+  color: var(--coal);
+  font-feature-settings: "tnum";
+}
+
+.legal-box {
+  margin-top: 2.4rem;
+  border: 1px solid var(--hairline);
+  padding: 1.4rem 1.6rem;
+  font-size: 0.8rem;
+  color: var(--coal);
+  line-height: 1.65;
+}
+
+.legal-box strong {
+  display: block;
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.product-prose {
+  border-top: 1px solid var(--hairline);
+}
+
+.product-prose .inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.product-prose h2 {
+  font-size: 1.7rem;
+}
+
+.cross-sell {
+  border-top: 1px solid var(--hairline);
+}
+
+.grid-products.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cross-sell .product-card figure {
+  height: 9rem;
+}
+
+@media (max-width: 64rem) {
+  .grid-products.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 46rem) {
+  .grid-products.cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Rechtsseiten ---------- */
+
+.legal-page {
+  max-width: 46rem;
+  margin-inline: auto;
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.legal-page h1 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 2.5rem;
+}
+
+.legal-page h2 {
+  font-size: 1.35rem;
+  margin: 2.5rem 0 0.8rem;
+}
+
+.legal-page p,
+.legal-page li {
+  font-size: 0.95rem;
+  color: var(--coal);
+  margin-bottom: 0.8rem;
+}
+
+.legal-page ul,
+.legal-page ol {
+  padding-left: 1.3rem;
+}
+
+.placeholder {
+  background: rgba(193, 163, 106, 0.18);
+  border: 1px dashed var(--gold);
+  padding: 0.05rem 0.4rem;
+}
+
+.todo-banner {
+  border: 1px dashed var(--gold);
+  background: rgba(193, 163, 106, 0.1);
+  padding: 1rem 1.3rem;
+  font-size: 0.8rem;
+  color: var(--coal);
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Reveal-Animation ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .product-card figure,
+  .btn {
+    transition: none;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 64rem) {
+  .grid-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product-hero {
+    grid-template-columns: 1fr;
+  }
+  .product-stage {
+    position: static;
+    padding-top: 0;
+  }
+  .product-stage svg {
+    height: clamp(16rem, 40vw, 22rem);
+  }
+  .product-prose .inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--ivory);
+    border-bottom: 1px solid var(--hairline);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0.5rem 1.5rem 1.2rem;
+    display: none;
+  }
+  .site-nav.open {
+    display: flex;
+  }
+  .site-nav a {
+    padding: 0.8rem 0;
+    width: 100%;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .charge-grid,
+  .manufaktur-grid {
+    grid-template-columns: 1fr;
+  }
+  .lot-stamp {
+    margin-block: 1rem;
+  }
+  .grid-products {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .material-list li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+  .spec-table th {
+    width: 8.5rem;
+    padding-right: 1rem;
+  }
+}
