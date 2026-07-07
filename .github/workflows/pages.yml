@@ -29,7 +29,7 @@ jobs:
       - name: Öffentliche Dateien zusammenstellen (Whitelist)
         run: |
           mkdir -p _site
-          cp index.html favicon.svg apple-touch-icon.png robots.txt sitemap.xml CNAME .nojekyll _site/
+          cp index.html favicon.ico favicon-32.png favicon-16.png apple-touch-icon.png robots.txt sitemap.xml CNAME .nojekyll _site/
           cp -r assets produkte rechtliches _site/
           # docs/ nur mitnehmen, wenn vorhanden (künftige COA/SDB-PDFs)
           if [ -d docs ]; then cp -r docs _site/; fi
