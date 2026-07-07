@@ -34,6 +34,13 @@ jobs:
           # docs/ nur mitnehmen, wenn vorhanden (künftige COA/SDB-PDFs)
           if [ -d docs ]; then cp -r docs _site/; fi
 
+      - name: Cache-Busting (CSS/JS mit Commit-Kennung versionieren)
+        run: |
+          V="${GITHUB_SHA::8}"
+          find _site -name "*.html" -exec sed -i \
+            -e "s|assets/css/style\.css|assets/css/style.css?v=${V}|g" \
+            -e "s|assets/js/main\.js|assets/js/main.js?v=${V}|g" {} +
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
