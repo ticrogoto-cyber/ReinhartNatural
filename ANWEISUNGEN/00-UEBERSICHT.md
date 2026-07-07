@@ -16,6 +16,8 @@ die eine juristische Prüfung brauchen).
 - ✅ SVG-Illustrationen — Siegel-Logo + 4 Braunglas-Flaschen als Inline-Sprite
 - ✅ Impressum, Datenschutzerklärung, AGB (`rechtliches/`) — **mit Platzhaltern, siehe 07**
 - ✅ `CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `favicon.svg`
+- ✅ Finales Siegel-Logo freigestellt: `assets/img/siegel*.png` (dunkle + helle
+  Variante, transparent; Original in `siegel-original.png`) — überall eingebaut
 - ✅ `.github/workflows/pages.yml` — deployt per Whitelist NUR die öffentlichen
   Dateien; dieser `ANWEISUNGEN/`-Ordner bleibt privat (Pages-Source muss auf
   „GitHub Actions" stehen, siehe 08)
