@@ -48,6 +48,13 @@ Kein Video darf Anwendung am Menschen zeigen (kein Auftragen auf Haut, kein Einn
 keine Tropfen in Wasser „zum Trinken"). Nur: Objekt, Labor, Handwerk, Material.
 Begründung: `01-kaufpsychologie-briefing.md`, Abschnitt 5 (HWG/Präsentationsarzneimittel).
 
+## Logo-Assets für Videos
+
+Das finale Siegel liegt freigestellt unter `assets/img/siegel.png` (dunkel, 1600 px,
+transparent) und `assets/img/siegel-hell-512.png` (hell, für dunkle Flächen).
+Verwendung: Endcard (Siegel zentriert auf Nachtblau #20242f, 2 s stehen lassen)
+und dezentes Wasserzeichen (hell, 6–8 % Deckkraft, Ecke unten rechts).
+
 ## Checkliste nach Generierung
 
 - [ ] Dateien nach `assets/video/` (MP4 + WebM + Poster)
