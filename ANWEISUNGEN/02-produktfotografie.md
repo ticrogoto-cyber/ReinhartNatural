@@ -16,7 +16,7 @@ Unboxing der „Peak" (Peak-End-Regel) — Fotos davon sind zugleich Social-Medi
 
 | Motiv | Verwendung |
 |---|---|
-| Flasche frontal, Etikett scharf, neutraler Fond (Elfenbein #f3efe4 oder Anthrazit #2f3133) | Produktseite Hero, Kollektions-Karte |
+| Flasche frontal, Etikett scharf, neutraler Fond (Porzellanweiß #fbfbf9 oder Nachtblau #20242f) | Produktseite Hero, Kollektions-Karte |
 | Flasche 3/4-Ansicht mit sichtbarem Verschluss (Pipette/Sprühkopf/Deckel) | Produktseite Galerie |
 
 ### B. Stimmungsbilder (Marke)
@@ -32,8 +32,9 @@ Unboxing der „Peak" (Peak-End-Regel) — Fotos davon sind zugleich Social-Medi
 
 - **Licht:** weich, seitlich, leicht warm (Apotheken-Nordlicht). Keine harten Blitzreflexe
   auf dem Glas — Braunglas lebt von einem einzigen, ruhigen Glanzstreifen.
-- **Farbwelt:** muss zur Website passen — Elfenbein (#f3efe4), Pergament (#e7dcc3),
-  Anthrazit (#2f3133), Tinte (#1b1b1b). Requisiten sparsam: Laborglas, Papier, Messing.
+- **Farbwelt:** muss zur Website passen — Porzellanweiß (#fbfbf9), Nachtblau (#20242f),
+  Tinte (#17191c) und die vier Substanzfarben Koralle (#c98a76), Ozeanblau (#517495),
+  Moosgrün (#77906f), Lavendel-Grau (#9d97ad). Requisiten sparsam: Laborglas, Papier, Messing.
 - **Format:** Quelldateien in RAW; Ableitungen als AVIF + WebP + JPEG-Fallback.
   Produktfreisteller mindestens 2000 px Kante, quadratisch UND 4:5.
 - **Dateinamen:** `assets/img/produkt-dmso-front.avif`, `-seite.avif`,
