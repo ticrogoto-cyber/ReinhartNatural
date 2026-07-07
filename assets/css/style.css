@@ -1,8 +1,8 @@
 /* ============================================================
    REINHART NATURAL — reinhartnatural.de
-   Apotheke · Avantgarde · Alchemie
-   Design-System nach Brandkit: Papier-Ivory, Tintenschwarz,
-   EB Garamond + Inter, scharfe Kanten, ein Diamant pro Produkt.
+   Design-System: Porzellanweiß, Tintenschwarz, Apothekergrün.
+   Cormorant Garamond (Display) + EB Garamond (Text) + Jost (UI),
+   scharfe Kanten, Messing nur als Detail, ein Diamant pro Produkt.
    ============================================================ */
 
 /* ---------- Schriften (selbst gehostet, DSGVO-konform) ---------- */
@@ -22,11 +22,25 @@
   src: url("../fonts/ebgaramond-italic-latin.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Inter";
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/cormorant-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/cormorant-italic-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Jost";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("../fonts/inter-latin.woff2") format("woff2");
+  src: url("../fonts/jost-latin.woff2") format("woff2");
 }
 @font-face {
   font-family: "Dawning of a New Day";
@@ -39,25 +53,32 @@
 /* ---------- Token ---------- */
 
 :root {
-  --ink: #1b1b1b;          /* Tintenschwarz */
-  --coal: #2f3133;         /* Kohlegrau */
-  --stone: #6a6d6e;        /* Steingrau */
-  --ivory: #f3efe4;        /* Papier Ivory */
-  --parchment: #e7dcc3;    /* Pergament Beige */
-  --gold: #c1a36a;         /* Altgold */
-  --deepsea: #1e3a45;      /* Tiefsee */
+  --ink: #17191c;          /* Tintenschwarz, kühl */
+  --coal: #34383d;         /* Anthrazit */
+  --stone: #74787d;        /* kühles Steingrau */
+  --porcelain: #fbfbf9;    /* Porzellanweiß — Seitengrund */
+  --paper: #ffffff;        /* reines Weiß — Karten */
+  --mist: #f0f1ee;         /* helle Wechselfläche */
+  --pine: #1d3b33;         /* Apothekergrün — Hauptakzent */
+  --abyss: #0e1f1b;        /* Schwarzgrün — Footer */
+  --gold: #b2a075;         /* Messing — nur für Details */
 
   --rosa: #b26a7a;         /* DMSO */
   --blau: #3e6a8e;         /* Methylenblau */
   --gruen: #6f8a70;        /* Magnesiumöl */
   --violett: #7b6a8a;      /* Zeolith */
 
-  --hairline: rgba(27, 27, 27, 0.22);
-  --hairline-soft: rgba(27, 27, 27, 0.12);
+  --hairline: rgba(23, 25, 28, 0.18);
+  --hairline-soft: rgba(23, 25, 28, 0.1);
   --amber: #7a4f2c;        /* Braunglas-Ton für Illustrationen */
 
+  /* Aliase für Bestandsregeln */
+  --ivory: var(--porcelain);
+  --parchment: var(--mist);
+
+  --serif-display: "Cormorant Garamond", "EB Garamond", "Garamond", Georgia, serif;
   --serif: "EB Garamond", "Garamond", "Georgia", serif;
-  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --sans: "Jost", "Avenir Next", "Century Gothic", Arial, sans-serif;
   --hand: "Dawning of a New Day", cursive;
 
   --w-wide: 76rem;
@@ -97,7 +118,7 @@ body::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.22;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -109,7 +130,7 @@ footer {
 }
 
 ::selection {
-  background: rgba(178, 106, 122, 0.25);
+  background: rgba(29, 59, 51, 0.16);
 }
 
 img,
@@ -159,27 +180,32 @@ li a:hover {
 
 /* ---------- Typografie ---------- */
 
-h1, h2, h3,
+h1, h2,
 .display {
-  font-family: var(--serif);
-  font-weight: 600;
-  line-height: 1.12;
+  font-family: var(--serif-display);
+  font-weight: 520;
+  line-height: 1.08;
   letter-spacing: 0.005em;
   color: var(--ink);
 }
 
 .display {
-  font-size: clamp(2.9rem, 7vw, 5.4rem);
-  font-weight: 550;
+  font-size: clamp(3rem, 7.4vw, 5.9rem);
+  font-weight: 480;
 }
 
 h2 {
-  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  font-weight: 520;
 }
 
 h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
 
 .lede {
@@ -219,7 +245,7 @@ h3 {
 .eyebrow .dia {
   font-size: 0.55em;
   vertical-align: 0.22em;
-  color: var(--ink);
+  color: var(--gold);
 }
 
 .small {
@@ -308,51 +334,53 @@ h3 {
 }
 
 .btn:hover {
-  background: var(--ink);
-  color: var(--ivory);
+  background: var(--pine);
+  border-color: var(--pine);
+  color: #f5f7f4;
 }
 
 .btn-solid {
-  background: var(--ink);
-  color: var(--ivory);
+  background: var(--pine);
+  border-color: var(--pine);
+  color: #f5f7f4;
 }
 
 .btn-solid:hover {
-  background: var(--coal);
-  border-color: var(--coal);
-  color: var(--ivory);
+  background: #16302a;
+  border-color: #16302a;
+  color: #f5f7f4;
 }
 
 /* ---------- Ankündigung + Header ---------- */
 
 .annonce {
-  background: var(--parchment);
-  border-bottom: 1px solid var(--hairline-soft);
+  background: var(--pine);
   text-align: center;
-  padding: 0.55rem 1rem;
+  padding: 0.6rem 1rem;
   font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--coal);
+  color: rgba(244, 246, 243, 0.88);
 }
 
 .annonce .dia {
   font-size: 0.55em;
   vertical-align: 0.22em;
+  color: var(--gold);
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(243, 239, 228, 0.92);
+  background: rgba(251, 251, 249, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--hairline-soft);
   transition: box-shadow 0.3s ease;
 }
 
 .site-header.scrolled {
-  box-shadow: 0 1px 0 var(--hairline), 0 8px 24px rgba(27, 27, 27, 0.05);
+  box-shadow: 0 1px 0 var(--hairline), 0 8px 24px rgba(14, 31, 27, 0.05);
 }
 
 .header-inner {
@@ -376,8 +404,8 @@ h3 {
 }
 
 .brand-name {
-  font-family: var(--serif);
-  font-size: 1.18rem;
+  font-family: var(--serif-display);
+  font-size: 1.28rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -443,27 +471,13 @@ h3 {
   margin: 0 auto 2.4rem;
 }
 
+.hero .eyebrow {
+  display: block;
+  margin-bottom: 1.7rem;
+}
+
 .hero .display {
-  margin-bottom: 1.6rem;
-}
-
-.tagline {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--coal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.1rem;
-  flex-wrap: wrap;
-}
-
-.tagline .dia {
-  font-size: 0.5em;
-  color: var(--rosa);
+  margin-bottom: 0;
 }
 
 .hero-claim {
@@ -524,7 +538,7 @@ h3 {
 }
 
 .product-card {
-  background: var(--ivory);
+  background: var(--paper);
   padding: 2.6rem 1.8rem 2.4rem;
   text-align: center;
   display: flex;
@@ -535,7 +549,7 @@ h3 {
 }
 
 .product-card:hover {
-  background: #f7f4ea;
+  background: #f4f5f2;
 }
 
 .product-card .no {
@@ -575,9 +589,9 @@ h3 {
 }
 
 .product-card h3 {
-  font-size: 1.45rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
 }
 
 .product-card .chem {
@@ -597,8 +611,8 @@ h3 {
 }
 
 .product-card .price {
-  font-family: var(--serif);
-  font-size: 1.25rem;
+  font-family: var(--serif-display);
+  font-size: 1.4rem;
   font-weight: 600;
   margin-top: 1.3rem;
 }
@@ -635,17 +649,17 @@ h3 {
 }
 
 .principle .num {
-  font-family: var(--serif);
-  font-size: 2.6rem;
-  font-weight: 500;
+  font-family: var(--serif-display);
+  font-size: 2.8rem;
+  font-weight: 450;
   color: var(--ink);
   font-feature-settings: "onum";
   line-height: 1;
 }
 
 .principle h3 {
-  margin: 1.1rem 0 0.7rem;
-  font-size: 1.35rem;
+  margin: 1.2rem 0 0.8rem;
+  font-size: 0.92rem;
 }
 
 .principle p {
@@ -655,8 +669,8 @@ h3 {
 }
 
 .pullquote {
-  font-family: var(--serif);
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-family: var(--serif-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 500;
   font-style: italic;
   text-align: center;
@@ -668,8 +682,46 @@ h3 {
 /* ---------- Charge ---------- */
 
 .charge {
-  background: var(--parchment);
-  border-block: 1px solid var(--hairline-soft);
+  background: var(--pine);
+  color: rgba(244, 246, 243, 0.82);
+}
+
+.charge h2 {
+  color: #f7f8f5;
+}
+
+.charge .eyebrow {
+  color: rgba(244, 246, 243, 0.55);
+}
+
+.charge .lede {
+  color: rgba(244, 246, 243, 0.75);
+}
+
+.charge .small {
+  color: rgba(244, 246, 243, 0.55);
+}
+
+.charge .btn {
+  border-color: rgba(244, 246, 243, 0.6);
+  color: #f5f7f4;
+}
+
+.charge .btn:hover {
+  background: rgba(244, 246, 243, 0.12);
+  border-color: #f5f7f4;
+}
+
+.charge .btn-solid {
+  background: #f7f8f5;
+  border-color: #f7f8f5;
+  color: var(--pine);
+}
+
+.charge .btn-solid:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--pine);
 }
 
 .charge-grid {
@@ -681,16 +733,13 @@ h3 {
 
 .lot-stamp {
   justify-self: center;
-  border: 2px solid var(--ink);
-  outline: 1px solid var(--ink);
+  border: 2px solid rgba(244, 246, 243, 0.9);
+  outline: 1px solid rgba(244, 246, 243, 0.9);
   outline-offset: 4px;
   padding: 2.1rem 2.6rem;
   text-align: center;
   transform: rotate(-2.5deg);
-  color: var(--ink);
-  opacity: 0.85;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(243, 239, 228, 0.35), transparent 60%);
+  color: #f5f7f4;
 }
 
 .lot-stamp .lot-no {
@@ -718,19 +767,20 @@ h3 {
   display: flex;
   gap: 1rem;
   padding: 0.85rem 0;
-  border-top: 1px solid var(--hairline-soft);
+  border-top: 1px solid rgba(244, 246, 243, 0.16);
   font-size: 0.92rem;
-  color: var(--coal);
+  color: rgba(244, 246, 243, 0.78);
 }
 
 .charge-facts li:last-child {
-  border-bottom: 1px solid var(--hairline-soft);
+  border-bottom: 1px solid rgba(244, 246, 243, 0.16);
 }
 
 .charge-facts .dia {
   flex: none;
   font-size: 0.5rem;
   line-height: 2.6;
+  color: var(--gold);
 }
 
 /* ---------- Manufaktur ---------- */
@@ -810,8 +860,8 @@ h3 {
   justify-content: space-between;
   gap: 2rem;
   padding: 1.35rem 0.2rem;
-  font-family: var(--serif);
-  font-size: 1.22rem;
+  font-family: var(--serif-display);
+  font-size: 1.38rem;
   font-weight: 600;
 }
 
@@ -864,19 +914,19 @@ h3 {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background: var(--ink);
-  color: rgba(243, 239, 228, 0.82);
+  background: var(--abyss);
+  color: rgba(235, 241, 237, 0.82);
   padding: clamp(3.5rem, 7vw, 5.5rem) 0 2.5rem;
   font-size: 0.85rem;
 }
 
 .site-footer a {
-  color: rgba(243, 239, 228, 0.82);
+  color: rgba(235, 241, 237, 0.82);
   transition: color 0.2s ease;
 }
 
 .site-footer a:hover {
-  color: var(--ivory);
+  color: #ffffff;
 }
 
 .footer-grid {
@@ -906,7 +956,7 @@ h3 {
   max-width: 24em;
   font-size: 0.8rem;
   line-height: 1.7;
-  color: rgba(243, 239, 228, 0.6);
+  color: rgba(235, 241, 237, 0.6);
 }
 
 .footer-col h4 {
@@ -915,7 +965,7 @@ h3 {
   font-weight: 500;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(243, 239, 228, 0.45);
+  color: rgba(235, 241, 237, 0.45);
   margin-bottom: 1.1rem;
 }
 
@@ -928,21 +978,21 @@ h3 {
 }
 
 .footer-legal {
-  border-top: 1px solid rgba(243, 239, 228, 0.15);
+  border-top: 1px solid rgba(235, 241, 237, 0.14);
   padding-top: 1.8rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
   justify-content: space-between;
   font-size: 0.72rem;
-  color: rgba(243, 239, 228, 0.5);
+  color: rgba(235, 241, 237, 0.5);
 }
 
 .footer-disclaimer {
   margin-top: 1.6rem;
   font-size: 0.7rem;
   line-height: 1.7;
-  color: rgba(243, 239, 228, 0.42);
+  color: rgba(235, 241, 237, 0.42);
   max-width: 60em;
 }
 
@@ -1005,14 +1055,15 @@ h3 {
 }
 
 .product-info h1 {
-  font-size: clamp(2.6rem, 5vw, 3.8rem);
-  font-weight: 650;
+  font-size: clamp(2.8rem, 5.4vw, 4.2rem);
+  font-weight: 520;
   letter-spacing: 0.02em;
   line-height: 1.05;
 }
 
 .product-info .chem {
-  font-family: var(--serif);
+  font-family: var(--serif-display);
+  font-weight: 500;
   font-style: italic;
   font-size: 1.35rem;
   color: var(--coal);
@@ -1038,7 +1089,7 @@ h3 {
 }
 
 .price-row .price {
-  font-family: var(--serif);
+  font-family: var(--serif-display);
   font-size: 2.1rem;
   font-weight: 600;
 }
@@ -1170,7 +1221,7 @@ h3 {
 }
 
 .legal-page h2 {
-  font-size: 1.35rem;
+  font-size: 1.55rem;
   margin: 2.5rem 0 0.8rem;
 }
 
@@ -1187,14 +1238,14 @@ h3 {
 }
 
 .placeholder {
-  background: rgba(193, 163, 106, 0.18);
+  background: rgba(178, 160, 117, 0.16);
   border: 1px dashed var(--gold);
   padding: 0.05rem 0.4rem;
 }
 
 .todo-banner {
   border: 1px dashed var(--gold);
-  background: rgba(193, 163, 106, 0.1);
+  background: rgba(178, 160, 117, 0.1);
   padding: 1rem 1.3rem;
   font-size: 0.8rem;
   color: var(--coal);
