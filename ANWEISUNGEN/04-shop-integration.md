@@ -30,8 +30,8 @@ Für 4 Produkte mit Chargen-Logik sind drei Wege realistisch, sortiert nach Empf
 
 Aus dem Kaufpsychologie-Brief (Taktik 2): **ehrliche Knappheit** über nummerierte
 Kleinchargen. Im Shop je Produkt eine Variante pro Charge führen
-(„Charge N° 001 — 300 Stück"); der Restbestand wird auf der Produktseite angezeigt
-(„noch 43 von 300"). Kein Countdown, keine künstliche Verknappung — nur Wahrheit.
+(„Charge N° 001 — 100 Stück"); der Restbestand wird auf der Produktseite angezeigt
+(„noch 43 von 100"). Kein Countdown, keine künstliche Verknappung — nur Wahrheit.
 
 ## Pflichten beim Checkout (vor Livegang prüfen)
 

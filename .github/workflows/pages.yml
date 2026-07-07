@@ -1,0 +1,44 @@
+# Deployt NUR die öffentlichen Website-Dateien zu GitHub Pages.
+# Interne Unterlagen (ANWEISUNGEN/, .github/, künftige Notizen) bleiben
+# bewusst außen vor — Whitelist statt Blacklist.
+name: Website zu GitHub Pages deployen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Öffentliche Dateien zusammenstellen (Whitelist)
+        run: |
+          mkdir -p _site
+          cp index.html favicon.svg robots.txt sitemap.xml CNAME .nojekyll _site/
+          cp -r assets produkte rechtliches _site/
+          # docs/ nur mitnehmen, wenn vorhanden (künftige COA/SDB-PDFs)
+          if [ -d docs ]; then cp -r docs _site/; fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

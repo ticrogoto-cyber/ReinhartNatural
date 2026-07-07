@@ -257,7 +257,7 @@ h3 {
   text-align: center;
 }
 
-.center .section-head {
+.section-head.center {
   margin-inline: auto;
 }
 
@@ -979,6 +979,10 @@ h3 {
   height: clamp(20rem, 38vw, 30rem);
   width: auto;
   margin-inline: auto;
+}
+
+.product-stage svg.h-sm {
+  height: clamp(16rem, 30vw, 24rem);
 }
 
 .product-stage svg.h-jar {

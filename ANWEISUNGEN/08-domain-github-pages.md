@@ -14,12 +14,21 @@ GitHub Pages sollte vom Default-Branch (`main`) ausgeliefert werden:
 ## Schritt 2 — GitHub Pages einschalten
 
 1. Repo → **Settings → Pages**
-2. Source: **Deploy from a branch**, Branch: `main`, Ordner: `/ (root)`
-3. Speichern. Nach 1–2 Minuten ist die Seite unter
+2. Source: **GitHub Actions** wählen — NICHT „Deploy from a branch"!
+3. Der Workflow `.github/workflows/pages.yml` läuft bei jedem Push auf `main`
+   automatisch (oder manuell über den Actions-Tab → „Website zu GitHub Pages
+   deployen" → Run workflow). Nach 1–2 Minuten ist die Seite unter
    `https://ticrogoto-cyber.github.io/ReinhartNatural/` erreichbar.
 
+**Warum GitHub Actions statt „Deploy from a branch":** Der Workflow deployt nur
+die öffentlichen Website-Dateien (Whitelist). Bei „Deploy from a branch" würde
+der GESAMTE Repo-Inhalt ausgeliefert — auch dieser `ANWEISUNGEN/`-Ordner wäre
+dann unter reinhartnatural.de/ANWEISUNGEN/ öffentlich abrufbar. Diese internen
+Unterlagen (insbesondere das Kaufpsychologie-Briefing) dürfen niemals auf der
+Verkaufsdomain erscheinen. Also: nie auf „Deploy from a branch" umstellen.
+
 Die Dateien `.nojekyll` (verhindert Jekyll-Verarbeitung) und `CNAME` (enthält
-`reinhartnatural.de`) liegen bereits im Repo.
+`reinhartnatural.de`) liegen bereits im Repo und werden vom Workflow mitkopiert.
 
 ## Schritt 3 — DNS beim Domain-Anbieter setzen
 
