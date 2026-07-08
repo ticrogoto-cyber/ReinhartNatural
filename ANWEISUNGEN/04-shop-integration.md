@@ -15,7 +15,7 @@ Für 4 Produkte mit Chargen-Logik sind drei Wege realistisch, sortiert nach Empf
   Varianten („Charge N° 001"), Trusted-Shops-Integration möglich.
 - Zu tun: Shopify-Konto, 4 Produkte + Grundpreise anlegen, deutsche Pflichtseiten
   verknüpfen, Buy-Button-Snippets in die Produktseiten einsetzen (die vorhandenen
-  `mailto:`-CTAs ersetzen; Klassen `.btn.btn-primary` beibehalten).
+  `mailto:`-CTAs ersetzen; Klassen `.btn.btn-solid` beibehalten).
 
 ### Option B — Snipcart / ein Headless-Cart
 - Bleibt komplett auf der eigenen Domain, nur JS-Einbindung + Preis-Attribute im HTML.

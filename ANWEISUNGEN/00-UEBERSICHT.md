@@ -33,11 +33,11 @@ die eine juristische Prüfung brauchen).
 | 05 | `05-chargen-brief-newsletter.md` | Newsletter-Anmeldung technisch anbinden | Mittel |
 | 06 | `06-coa-sdb-dokumente.md` | Analysenzertifikate (COA) + Sicherheitsdatenblätter (SDB) als PDF | **Sehr hoch** |
 | 07 | `07-rechtliches-fertigstellen.md` | Platzhalter füllen, Widerrufsbelehrung, anwaltliche Prüfung | **Vor Launch zwingend** |
-| 08 | `08-domain-github-pages.md` | GitHub Pages aktivieren, DNS für reinhartnatural.de | **Sofort** |
+| 08 | `08-domain-github-pages.md` | Nur noch: DNS beim Registrar + Search Console (Pages läuft) | Hoch |
 
 ## Empfohlene Reihenfolge
 
-1. **08** — GitHub Pages aktivieren, damit die Seite überhaupt live ist (10 Minuten).
+1. **08** — DNS beim Registrar setzen, falls noch offen (Pages-Deploy läuft bereits).
 2. **07** — Platzhalter in den Rechtsseiten füllen; ohne vollständiges Impressum drohen Abmahnungen.
 3. **06** — COA-PDFs beim Labor beauftragen; das ist laut Recherche der Kaufauslöser Nr. 1 dieser Nische.
 4. **02** — Produktfotografie beauftragen oder selbst machen.

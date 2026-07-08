@@ -33,6 +33,8 @@ jobs:
           cp -r assets produkte rechtliches _site/
           # docs/ nur mitnehmen, wenn vorhanden (künftige COA/SDB-PDFs)
           if [ -d docs ]; then cp -r docs _site/; fi
+          # Brand-Quelldatei (6 MB) nicht ausliefern
+          rm -f _site/assets/img/siegel-original.png _site/assets/img/siegel.png _site/assets/img/siegel-hell-512.png
 
       - name: Cache-Busting (CSS/JS mit Commit-Kennung versionieren)
         run: |

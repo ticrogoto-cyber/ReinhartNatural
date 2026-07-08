@@ -26,7 +26,7 @@ Wartelisten-Mechanik bei ausverkauften Chargen).
    POSTet direkt an den Dienst (Brevo/Mailchimp bieten Form-Endpoints) oder über ein
    schlankes Serverless-Relay. Das Formular ersetzt den `mailto:`-CTA in der
    `#verteiler`-Sektion der `index.html` (eine E-Mail-Zeile + Absenden-Button,
-   Klassen `.btn.btn-primary` weiterverwenden).
+   Klassen `.btn.btn-solid` weiterverwenden).
 3. **Datenschutzerklärung aktualisieren:** In `rechtliches/datenschutz.html` ist unter
    „8. Chargen-Brief (Newsletter)" ein Platzhalter für den Dienstleister — eintragen
    und ggf. AVV-Hinweis ergänzen.
