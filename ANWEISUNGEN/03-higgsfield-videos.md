@@ -40,7 +40,7 @@ Dateien nach `assets/video/`.
 
 Ein 5-Sekünder pro Flasche (langsame 180°-Drehung auf Drehteller-Optik, passender
 Akzentfarb-Hintergrund je Produkt: Rosa #c98a76, Blau #517495, Grün #77906f,
-Violett #7d6a8e). Verwendung: Hover-Effekt auf den Kollektions-Karten (nice-to-have).
+Lavendel-Grau #9d97ad). Verwendung: Hover-Effekt auf den Kollektions-Karten (nice-to-have).
 
 ## Rechliche Leitplanke für ALLE Videos
 

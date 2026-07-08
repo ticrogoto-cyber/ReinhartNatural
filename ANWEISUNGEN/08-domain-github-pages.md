@@ -1,4 +1,9 @@
-# 08 — GitHub Pages aktivieren & Domain verbinden (SOFORT, 10 Minuten)
+# 08 — GitHub Pages & Domain (Schritte 1+2 ERLEDIGT)
+
+> **Stand Juli 2026:** Schritt 1 (Merge nach main) und Schritt 2 (Pages via
+> GitHub Actions) sind erledigt — der Workflow deployt bei jedem main-Push.
+> OFFEN sind nur noch Schritt 3 (DNS beim Registrar) und Schritt 4
+> (Verifizieren + Search Console), sofern noch nicht geschehen.
 
 Die Website liegt im Repo `ticrogoto-cyber/ReinhartNatural` auf dem Branch
 `claude/reinhart-natural-website-1gz0rn`. Damit sie unter **reinhartnatural.de** live

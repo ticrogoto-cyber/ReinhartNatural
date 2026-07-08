@@ -1347,14 +1347,6 @@ h3 {
   padding: 0.05rem 0.4rem;
 }
 
-.todo-banner {
-  border: 1px dashed var(--gold);
-  background: rgba(178, 160, 117, 0.1);
-  padding: 1rem 1.3rem;
-  font-size: 0.8rem;
-  color: var(--coal);
-  margin-bottom: 2.5rem;
-}
 
 /* ---------- Reveal-Animation ---------- */
 
@@ -1389,6 +1381,28 @@ h3 {
   .product-card figure,
   .btn {
     transition: none;
+  }
+}
+
+/* ---------- Druck ---------- */
+
+@media print {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .annonce,
+  .site-nav,
+  .nav-toggle,
+  .hero-cells,
+  body::before,
+  body::after {
+    display: none !important;
+  }
+  .charge,
+  .site-footer {
+    background: none !important;
+    color: var(--ink) !important;
   }
 }
 
